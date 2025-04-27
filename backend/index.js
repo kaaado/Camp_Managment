@@ -18,7 +18,7 @@ app.locals.db = db;
 
 app.use("/question", llmRoute);
 app.use("/auth", authRoutes);
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/camp", campRouter);
 
 app.listen(PORT, () => {
