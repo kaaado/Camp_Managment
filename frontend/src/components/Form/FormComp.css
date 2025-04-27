@@ -1,0 +1,27 @@
+.left-side{
+background-color:#f6f5fa;
+}
+
+.right-side input{
+	outline:none;
+}
+
+
+.error{
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    display: block;
+}
+
+
+.scale-hover:hover {
+  transform: scale(1.09);
+  transition: transform 0.3s ease;
+}

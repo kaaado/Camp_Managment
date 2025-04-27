@@ -1,0 +1,64 @@
+@import "tailwindcss";  
+
+* {
+  @apply m-0 p-0 box-border;
+}
+
+
+body {
+  font-family:"Lato" ,sans-serif;
+}
+
+
+.fade-in {
+  opacity: 0; 
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.toast {
+  background-color: #333; 
+  color: white;           
+  border-radius: 8px;  
+  padding: 16px;        
+  margin: 8px 0;         
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes custom-enter {
+  from {
+    transform: translateY(20px); 
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes custom-exit {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px); 
+    opacity: 0;
+  }
+}
+
+.transition-transform {
+  transition: transform 0.2s ease-in-out;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
