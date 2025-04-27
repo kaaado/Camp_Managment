@@ -12,7 +12,7 @@ router.post("/llm", async (req, res) => {
       {
         model: "deepseek/deepseek-chat-v3-0324:free",
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 600,
+        max_tokens: 300,
       },
       {
         headers: {
