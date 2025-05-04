@@ -55,7 +55,7 @@ campRouter.get("/all/:num", async (req, res) => {
   }
 });
 
-campRouter.post("/", async (req, res) => {
+campRouter.post("/add", async (req, res) => {
   const db = req.app.locals.db;
   const {
     name,
@@ -65,7 +65,6 @@ campRouter.post("/", async (req, res) => {
     associatorName,
     type,
     maxcap,
-    dawra,
     agecapmax,
     agecapmin,
     team,
@@ -76,8 +75,8 @@ campRouter.post("/", async (req, res) => {
   try {
     await db.run(
       `INSERT INTO camp
-        (name, place, datestart, enddate, associatorName, type, maxcap, dawra, agecapmax, agecapmin, team, program, rules)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        (name, place, datestart, enddate, associatorName, type, maxcap, agecapmax, agecapmin, team, program, rules)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?)`,
       [
         name,
         place,
@@ -86,7 +85,6 @@ campRouter.post("/", async (req, res) => {
         associatorName,
         type,
         maxcap,
-        dawra,
         agecapmax,
         agecapmin,
         team,
@@ -112,7 +110,6 @@ campRouter.put("/:id", async (req, res) => {
     associatorName,
     type,
     maxcap,
-    dawra,
     agecapmax,
     agecapmin,
     team,
@@ -124,7 +121,7 @@ campRouter.put("/:id", async (req, res) => {
     const result = await db.run(
       `UPDATE camp SET
         name = ?, place = ?, datestart = ?, enddate = ?, associatorName = ?, type = ?,
-        maxcap = ?, dawra = ?, agecapmax = ?, agecapmin = ?, team = ?, program = ?, rules = ?
+        maxcap = ?,  agecapmax = ?, agecapmin = ?, team = ?, program = ?, rules = ?
        WHERE id = ?`,
       [
         name,
@@ -134,7 +131,6 @@ campRouter.put("/:id", async (req, res) => {
         associatorName,
         type,
         maxcap,
-        dawra,
         agecapmax,
         agecapmin,
         team,

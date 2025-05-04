@@ -1,6 +1,6 @@
 import React from 'react'
-import FormComp from '../../components/Form/FormComp'
-import { REGISTER } from '../../api/api'
+import FormComp from '../../../components/Form/FormComp'
+import { REGISTER } from '../../../api/api'
 
 export default function Register() {
     const registerData=['name','mail','password']

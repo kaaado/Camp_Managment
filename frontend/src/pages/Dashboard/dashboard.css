@@ -1,0 +1,59 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  gap: 10px;
+  width: 100%;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column; 
+  width: calc(100% - 270px); 
+  transition: width 0.5s ease; 
+}
+
+.outlet-container {
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  margin-top: 80px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   transition: width 0.5s ease;
+}s
+
+.custom-progress {
+  width: 100%;
+  height: 9px;
+  border-radius: 10px;
+  background-color: rgb(214, 212, 212);
+  display: block;
+}
+
+.inner-progress {
+  position: relative;
+  background-color: #56b6ff;
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.inner-progress::after {
+  content: attr(percent);
+  position: absolute;
+  top: -25px;
+  right: 0;
+  background-color: rgb(116, 116, 116);
+  color: white;
+  width: 38px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 3px;
+}

@@ -17,14 +17,7 @@ export const initDB = async () => {
     );
   `);
 
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS dawra (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      dawraCap INTEGER NOT NULL,
-      startDate TEXT NOT NULL,
-      endDate TEXT NOT NULL
-    );
-  `);
+ 
 
   await db.exec(`
     CREATE TABLE IF NOT EXISTS camp (
@@ -33,16 +26,14 @@ export const initDB = async () => {
       place TEXT NOT NULL,
       datestart TEXT NOT NULL,
       enddate TEXT NOT NULL,
-      associatorName TEXT,
+      associatorName TEXT NOT NULL,
       type TEXT,
       maxcap INTEGER,
-      dawra INTEGER,
       agecapmax INTEGER,
       agecapmin INTEGER,
       team TEXT,
       program TEXT,
-      rules TEXT,
-      FOREIGN KEY(dawra) REFERENCES dawra(id)
+      rules TEXT
     );
   `);
 

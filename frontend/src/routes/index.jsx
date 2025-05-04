@@ -37,14 +37,14 @@ const router = createBrowserRouter([
             {
               element: <RequireAuth allowedRoles={['admin','user']} />,
               children: [
-                { path: "/dashboard/camp", element: <Camp /> },
+                { path: "camps", element: <Camp /> },
               ],
             },
             // Admin-only Routes
         {
           element: <RequireAuth allowedRoles={['admin']} />,
           children: [
-            { path: "/dashboard/admin", element: <AdminPanel /> },
+            { path: "users", element: <AdminPanel /> },
           ],
         },
           ],

@@ -1,4 +1,4 @@
-import { Link,useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./FormComp.css";
 import axios from "axios";
 import { BASEURL } from "../../api/api";
@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 import Cookie from "cookie-universal";
 import { useMutation } from "react-query";
 import useForm from "../../hooks/useForm"; 
-import { GiCampingTent } from "react-icons/gi";
+import { FaCampground } from "react-icons/fa6";
+
 import Spinner from "react-bootstrap/Spinner";
 import campBg from "../../assets/campBg.png";
 
@@ -14,7 +15,7 @@ function FormComp(props) {
   // Set up Coockie for storing the token 
   const cookie = Cookie();
   // Set up navigation & location
-  const nav = useNavigate();
+  
   const location = useLocation();
 
   // Using useForm Hook
@@ -33,7 +34,6 @@ function FormComp(props) {
   const mutation = useMutation(
     async () => {
       const response = await axios.post(`${BASEURL}/${props.endApi}`, formData);
-      console.log(response);
       return response.data;
     },
     {
@@ -47,15 +47,17 @@ function FormComp(props) {
         toast.success(`Welcome ${data?.user?.name?.slice(0, 15)}`);
 
         if (user.type === "user") {
-          window.location.pathname = "/dashboard/camp";
+        window.location.pathname = "/dashboard/camps";
+
         } else {
-          window.location.pathname = "/dashboard/admin";
+            window.location.pathname = "/dashboard/users";
+
         }
         
         resetForm();
       },
       onError: (error) => {
-             console.log(error)
+              
       },
     }
   );
@@ -66,9 +68,9 @@ function FormComp(props) {
   };
 
   return (
-    <div className="w-100 vh-100 d-flex align-items-center justify-content-center">
+    <div className="w-100 vh-100 d-flex align-items-center justify-content-center p-0">
       <div className="row w-100 g-0">
-        <div className="left-side col-lg-8 d-none d-lg-flex justify-content-center align-items-center">
+        <div className="left-side col-lg-8 d-none d-lg-flex justify-content-center align-items-center w-50 ">
           <img
             loading="lazy"
             src={campBg}
@@ -78,15 +80,16 @@ function FormComp(props) {
           />
         </div>
 
-        <div className="px-5 right-side col-lg-4 col-md-8 col-sm-10 mx-auto d-flex flex-column align-items-start justify-content-center py-4 shadow-sm rounded bg-white form-container vh-100">
+        <div className="w-50 px-5 right-side col-lg-4 col-md-12 col-sm-12 mx-auto d-flex flex-column align-items-start justify-content-center py-4 shadow-sm rounded bg-white form-container vh-100">
        <h2 className="mt-4 fw-bold text-start text-sm-center flex align-items-center gap-3">
        
-       <GiCampingTent style={{ fontSize: "4rem" }} className="text-orange-400" /> Summer Camp
+       <FaCampground
+ style={{ fontSize: "2rem",color:"#FFA500" }}  /> Summer Camp
  
 </h2>
 
 
-          <h3 className="mt-2  fs-4 text-start mb-1 text-capitalize text-truncate">
+          <h3 className="mt-2  text-start mb-1 text-capitalize flex align-items-center gap-3">
             Welcome to Summer Camp! 👋
           </h3>
           <h4 className="text-secondary mb-4 fs-6 w-100">
@@ -103,7 +106,7 @@ function FormComp(props) {
                   type={field === "name" ? "text" : field === "mail" ? "email" : "password"}
                   id={field}
                   name={field}
-                  className="form-control outline-none px-3 py-2"
+                  className="form-control outline-none px-3 py-2 w-100"
                   value={formData[field]}
                   onChange={handleChange}
                   placeholder={`Enter your ${field} ...`}
@@ -128,7 +131,7 @@ function FormComp(props) {
             </p>
 
            {mutation.isError && (
-              <p className="error">{mutation.error?.response?.status === 422 ? mutation.error?.response?.data?.message :mutation.error?.response?.status === 401 ? mutation.error?.response?.data?.error : "Something went wrong!"}</p>
+              <p className="error">{mutation.error?.response?.status !== 201 ? mutation.error?.response?.data?.error : "Something went wrong!"}</p>
             )}
           </form>          
         </div>

@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import llmRoute from "./routes/llm.js";
 import authRoutes from "./routes/auth.js";
 import userRouter from "./routes/user.js";
@@ -11,6 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 let db = await initDB();
@@ -22,5 +24,5 @@ app.use("/user", userRouter);
 app.use("/camp", campRouter);
 
 app.listen(PORT, () => {
-  console.log(`Mouadh in the back saying hi on port 3000`);
+  console.log(`Mouadh in the back saying hi on port `+PORT);
 });

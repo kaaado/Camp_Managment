@@ -1,9 +1,11 @@
 .left-side{
 background-color:#f6f5fa;
+width: 70%;
 }
 
 .right-side input{
 	outline:none;
+  width: 30%;
 }
 
 

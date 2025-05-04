@@ -12,7 +12,7 @@ export default function Err403({ role }) {
       </div>
       <Link 
         className="d-block text-center btn btn-primary" 
-        to={role === "user" ? "/dashboard" : "/"}
+        to={role === "user" ? "/dashboard/camps" : "/"}
       >
         {role === "user" ? "Go to Dashboard" : "Go to Home Page"}
       </Link>
