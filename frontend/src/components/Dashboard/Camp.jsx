@@ -95,8 +95,8 @@ export default function Camps() {
                     </Link>
                     </div>
                   ) : (
-                    <Link className="fs-7 bg-secondary text-white rounded py-1 px-2" to={`/dashboard/camp/detail/${camp.id}`}>
-                      More
+                    <Link  to={`/dashboard/camp/detail/${camp.id}`}>
+                      <CiCircleMore  color="black" size={19} />
                     </Link>
                   )}
                 </td>
