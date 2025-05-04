@@ -4,6 +4,7 @@ import axios from "axios";
 import { BASEURL } from "../../../api/api";
 import toast from "react-hot-toast";
 import { Button } from "react-bootstrap";
+import LoadingSubmit from "../../../components/Loading/loading";
 
 
 export default function EditUser() {
@@ -13,12 +14,13 @@ export default function EditUser() {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [type, setType] = useState("user");
+  const [type, setType] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
+
+  
+  
   useEffect(() => {
     async function fetchUser() {
       setLoading(true);
@@ -28,6 +30,8 @@ export default function EditUser() {
         setName(user.name);
         setMail(user.mail);
         setType(user.type);
+
+       
       } catch (err) {
         console.error(err);
         setError("Failed to load user data");
@@ -38,12 +42,10 @@ export default function EditUser() {
 
     fetchUser();
   }, [id]);
-
+ 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    setError("");
-    setSuccess("");
 
     try {
       await axios.put(`${BASEURL}/user/${id}`, {
@@ -53,10 +55,11 @@ export default function EditUser() {
         type,
       });
 
+      
       toast.success("User updated successfully!");
-      setTimeout(() => {
+    
         navigate("/dashboard/users"); 
-      }, 1500);
+      
     } catch (err) {
       console.error(err);
       toast.error("Failed to update user");
@@ -69,7 +72,7 @@ export default function EditUser() {
     <div className=" bg-white w-100 mx-2 p-3">
       <h1>Update User</h1>
 
-      {loading && <p>Loading...</p>}
+      {loading && <LoadingSubmit />}
       
 
       <form onSubmit={handleSubmit} className="mt-3">

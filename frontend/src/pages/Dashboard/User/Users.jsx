@@ -26,7 +26,7 @@ export default function Users() {
   const headers = [
     { key: "name", name: "Username" },
     { key: "mail", name: "Email" },
-    { key: "type", name: "Role" },
+    { key: "type", name: "Type" },
   ];
 
   const handleDelete = async (id) => {

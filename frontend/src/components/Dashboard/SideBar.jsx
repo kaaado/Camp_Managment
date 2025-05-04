@@ -7,9 +7,11 @@ import { useContext } from 'react';
 
 
 import { useUser } from '../../context/UserContext';
-import LoadingSubmit from '../Loading/loading';
+import { TbUsersPlus } from "react-icons/tb";
+
 import { FaPlus, FaUser, FaUsers} from "react-icons/fa";
 import { FaCampground } from "react-icons/fa6";
+import LoadingSubmit from '../Loading/loading';
 
 
 export default function SideBar() {
@@ -75,6 +77,8 @@ if (!isAuthenticated()) {
   </p>
 </NavLink>
 
+
+
 { user.type==="admin" && <>
      <NavLink 
   
@@ -99,12 +103,24 @@ if (!isAuthenticated()) {
     
   />
   <p className="m-0" style={{ display: isOpen ? "block" : "none" }}>
-    Kids
+   Kids
   </p>
 </NavLink>
 </>
 }
-   
+<NavLink 
+  
+  to="/dashboard/kid/add"
+  className={`side-bar-link d-flex align-items-center gap-2 ${isOpen ? 'side-bar-expanded' : 'side-bar-collapsed'}`}
+>
+  <TbUsersPlus 
+    className='sidebar-icon icon-collapsed fs-1'
+    
+  />
+  <p className="m-0" style={{ display: isOpen ? "block" : "none" }}>
+   Add Kid
+  </p>
+</NavLink>
     </div></>
   );
 }

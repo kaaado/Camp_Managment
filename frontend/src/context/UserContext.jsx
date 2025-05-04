@@ -5,7 +5,7 @@ import Cookie from 'cookie-universal';
 export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUserState] = useState(null);
   const [loading, setLoading] = useState(true);
   const cookies = Cookie();
 
@@ -23,24 +23,35 @@ export default function UserProvider({ children }) {
       const userData = cookies.get('user');
       
       if (!token || !userData) {
-        setUser(null);
+        setUserState(null);
       } else {
-        setUser(sanitizeUser(userData));
+        setUserState(sanitizeUser(userData));
       }
     } catch (error) {
       console.error('Error fetching user from cookies:', error);
-      setUser(null);
+      setUserState(null);
     } finally {
       setLoading(false);
     }
   };
 
+  // Set user data in both state and cookies
+  const setUser = (userData) => {
+    const sanitizedData = sanitizeUser(userData);
+    setUserState(sanitizedData);
+    
+    // Set cookie with expiration (e.g., 7 days)
+    const expires = new Date();
+    expires.setDate(expires.getDate() + 7);
+    
+    cookies.set('user', sanitizedData, { path: '/', expires });
+  };
 
   // Logout function
   const logout = () => {
     cookies.remove('camp');
     cookies.remove('user');
-    setUser(null);
+    setUserState(null);
   };
 
   // Check authentication status
@@ -64,6 +75,7 @@ export default function UserProvider({ children }) {
       loading, 
       logout, 
       fetchUser,
+      setUser,
       isAuthenticated,
       hasRole
     }}>

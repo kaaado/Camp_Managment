@@ -11,8 +11,10 @@ import Users from './pages/Dashboard/User/Users';
 import User from './pages/Dashboard/User/User';
 import CampDetails from './pages/Dashboard/Camp/CampDetails';
 import AddCamp from './pages/Dashboard/Camp/AddCamp';
-import Kids from './pages/Dashboard/Kid/Kids';
 import UpdateCamp from './pages/Dashboard/Camp/UpdateCamp';
+import AddKid from './pages/Dashboard/Kid/AddKid';
+import Kids from './pages/Dashboard/Kid/Kids';
+import DetailsKid from './pages/Dashboard/Kid/DetailsKid';
 
 export default function App() {
   return (
@@ -41,12 +43,15 @@ export default function App() {
               <Route path="camp/:id" element={<UpdateCamp />} />
               {/* Kids */}
               <Route path='kids' element={<Kids />} />
+              <Route path='kid/detail/:id' element={<DetailsKid />} />
+              
             </Route>
             
             <Route element={<RequireAuth allowedRoles={["user","admin"]} />}>
               {/* Camp */}
               <Route path='camps' element={<Camp />} />
               <Route path='camp/detail/:id' element={<CampDetails />} />
+              <Route path='kid/add' element={<AddKid />} />
             </Route>
           </Route>
         </Route>

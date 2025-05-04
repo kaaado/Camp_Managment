@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.js";
 import userRouter from "./routes/user.js";
 import { initDB } from "./DB/database.js";
 import campRouter from "./routes/camp.js";
+import kidRouter from "./routes/kid.js";
 
 dotenv.config();
 
@@ -22,7 +23,8 @@ app.use("/question", llmRoute);
 app.use("/auth", authRoutes);
 app.use("/user", userRouter);
 app.use("/camp", campRouter);
+app.use("/kid", kidRouter);
 
 app.listen(PORT, () => {
-  console.log(`Mouadh in the back saying hi on port `+PORT);
+  console.log(`Port `+PORT);
 });

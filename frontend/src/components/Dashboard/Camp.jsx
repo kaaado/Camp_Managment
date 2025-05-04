@@ -90,6 +90,9 @@ export default function Camps() {
                         style={{ cursor: 'pointer' }}
                         onClick={() => handleDelete(camp.id)}
                       />
+                      <Link  to={`/dashboard/camp/detail/${camp.id}`}>
+                      <CiCircleMore  color="black" size={19} />
+                    </Link>
                     </div>
                   ) : (
                     <Link className="fs-7 bg-secondary text-white rounded py-1 px-2" to={`/dashboard/camp/detail/${camp.id}`}>

@@ -80,7 +80,7 @@ function FormComp(props) {
           />
         </div>
 
-        <div className="w-50 px-5 right-side col-lg-4 col-md-12 col-sm-12 mx-auto d-flex flex-column align-items-start justify-content-center py-4 shadow-sm rounded bg-white form-container vh-100">
+        <div className=" w-50 px-lg-5 px-3 right-side col-lg-4 col-md-12 col-sm-12 mx-auto d-flex flex-column align-items-start justify-content-center py-4 shadow-sm rounded bg-white form-container vh-100">
        <h2 className="mt-4 fw-bold text-start text-sm-center flex align-items-center gap-3">
        
        <FaCampground
