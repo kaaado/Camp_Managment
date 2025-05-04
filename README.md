@@ -1,5 +1,5 @@
 # CampApp
- **Frontent:**
+**Frontent:**
  1. Install packages :
     ```
     npm install --legacy-peer-deps
@@ -10,9 +10,10 @@
     ```
 at 
     ```
-    http://localhost:5173/)
+    http://localhost:5173/
     ```
-   **Backend:**
+    
+**Backend:**
  1. Install packages :
     ```
     npm install 
