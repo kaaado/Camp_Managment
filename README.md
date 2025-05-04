@@ -8,7 +8,10 @@
     ```
     npm run dev
     ```
-    
+at 
+    ```
+    http://localhost:5173/)
+    ```
    **Backend:**
  1. Install packages :
     ```
@@ -23,8 +26,5 @@
     ```
     npm start
     ```
-  at 
-    ```
-    http://localhost:5173/)
-    ```
+
   
