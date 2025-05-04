@@ -166,10 +166,10 @@ const DetailsKid = () => {
           <Col md={4} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
-                Zayad Document
+              Birth Certificate
               </Card.Header>
               <Card.Body className="text-center">
-                {renderFilePreview(kid.zayad, "Zayad")}
+                {renderFilePreview(kid.zayad, "Birth Certificate")}
               </Card.Body>
             </Card>
           </Col>
@@ -177,10 +177,10 @@ const DetailsKid = () => {
           <Col md={4} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
-                Tasrih Abawi
+              Paternal Authorization 
               </Card.Header>
               <Card.Body className="text-center">
-                {renderFilePreview(kid.tasrihAbawi, "Tasrih Abawi")}
+                {renderFilePreview(kid.tasrihAbawi, "Paternal Authorization ")}
               </Card.Body>
             </Card>
           </Col>
@@ -188,10 +188,10 @@ const DetailsKid = () => {
           <Col md={4} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
-                Chada Tibiya
+              Medical Certificate
               </Card.Header>
               <Card.Body className="text-center">
-                {renderFilePreview(kid.chadaTibiya, "Chada Tibiya")}
+                {renderFilePreview(kid.chadaTibiya, "Medical Certificate")}
               </Card.Body>
             </Card>
           </Col>

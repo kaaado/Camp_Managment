@@ -249,32 +249,38 @@ console.log(campId)
 
         {/* File uploads with previews */}
         {['zayad', 'tasrihAbawi', 'chadaTibiya'].map((fileType) => (
-          <Form.Group key={fileType} className="mb-3" controlId={fileType}>
-            <Form.Label>{fileType.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</Form.Label>
-            <div className="d-flex flex-row gap-2 align-items-center">
-              {filePreviews[fileType] && (
-                <img 
-                  src={filePreviews[fileType]} 
-                  width={80} 
-                  height={80} 
-                  alt={`${fileType} preview`} 
-                  className="rounded fade-in" 
-                  style={{ objectFit: 'cover' }}
-                />
-              )}
-              <Form.Control
-                name={fileType}
-                type="file"
-                onChange={handleFileChange}
-                required
-                accept=".pdf,.jpg,.jpeg,.png"
-              />
-            </div>
-            <Form.Text className="text-muted">
-              PDF, JPG, or PNG files only
-            </Form.Text>
-          </Form.Group>
-        ))}
+  <Form.Group key={fileType} className="mb-3" controlId={fileType}>
+    <Form.Label>
+      {fileType === "zayad" 
+        ? "Birth Certificate" 
+        : fileType === "tasrihAbawi" 
+          ? "Paternal Authorization" 
+          : "Medical Certificate"}
+    </Form.Label>
+    <div className="d-flex flex-row gap-2 align-items-center">
+      {filePreviews[fileType] && (
+        <img 
+          src={filePreviews[fileType]} 
+          width={80} 
+          height={80} 
+          alt={`${fileType} preview`} 
+          className="rounded fade-in" 
+          style={{ objectFit: 'cover' }}
+        />
+      )}
+      <Form.Control
+        name={fileType}
+        type="file"
+        onChange={handleFileChange}
+        required
+        accept=".pdf,.jpg,.jpeg,.png"
+      />
+    </div>
+    <Form.Text className="text-muted">
+      PDF, JPG, or PNG files only
+    </Form.Text>
+  </Form.Group>
+))}
 
         <Button 
           type="submit" 
