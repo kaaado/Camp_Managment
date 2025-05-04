@@ -4,9 +4,13 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import LoadingSubmit from '../../../Components/Loading/loading';
 import { BASEURL } from '../../../api/api';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation  } from 'react-router-dom';
 
 const AddKid = () => {
+const { search } = useLocation();
+const queryParams = new URLSearchParams(search);
+const campId = queryParams.get('campId');
+console.log(campId)
   // Form data state
   const [formData, setFormData] = useState({
     kidName: "",
@@ -16,6 +20,7 @@ const AddKid = () => {
     fatherMail: "",
     kidAge: "",
     adresse: "",
+    idCamp: campId || ""
   });
 
   // Files state with previews
@@ -120,6 +125,7 @@ const AddKid = () => {
         fatherMail: "",
         kidAge: "",
         adresse: "",
+        idCamp: campId || ""
       });
       setFiles({
         zayad: null,
@@ -145,8 +151,9 @@ const AddKid = () => {
           
       {loading && <LoadingSubmit />}
       <div className="bg-white p-2 w-100">
-      <h1>Add Kid</h1>
+      <h1>Add Kid{campId ? ` to Camp` : ''}</h1>
       <Form className="bg-white w-100 mx-2 p-3" onSubmit={handleSubmit}>
+      
         <Form.Group className="mb-3" controlId="kidName">
           <Form.Label>Kid Name</Form.Label>
           <Form.Control

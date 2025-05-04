@@ -48,7 +48,7 @@ export default function Users() {
 
       {loading ? (
         <div className="text-center">Loading...</div>
-      ) : users.length === 0 ? (
+      ) : users.length === 1 ? (
         <div className="text-center">No users found.</div>
       ) : (
         <table className="table table-striped">

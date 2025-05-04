@@ -16,15 +16,28 @@ const DetailsKid = () => {
   const [loading, setLoading] = useState(false);
   const [showDocument, setShowDocument] = useState(false);
   const [currentDoc, setCurrentDoc] = useState(null);
+  const [camp, setCamp] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    axios.get(`${BASEURL}/kid/${id}`)
-      .then((response) => {
-        setKid(response.data);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const kidResponse = await axios.get(`${BASEURL}/kid/${id}`);
+        setKid(kidResponse.data);
+        
+        if (kidResponse.data.idCamp) {
+          const campResponse = await axios.get(`${BASEURL}/camp/${kidResponse.data.idCamp}`);
+          setCamp(campResponse.data);
+        }
+      } catch (err) {
+        console.error(err);
+        toast.error('Failed to load data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const handleDocumentClick = (docUrl, docType) => {
@@ -126,13 +139,16 @@ const DetailsKid = () => {
                   <ListGroup.Item>
                     <strong>Father's Phone:</strong> {kid.fatherNumber}
                   </ListGroup.Item>
+                  <ListGroup.Item>
+                    <strong>Father's Email:</strong> {kid.fatherMail || 'N/A'}
+                  </ListGroup.Item>
                 </ListGroup>
               </Col>
               <Col md={6}>
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <strong>Father's Email:</strong> {kid.fatherMail || 'N/A'}
-                  </ListGroup.Item>
+                <ListGroup.Item>
+        <strong>Camp:</strong> {camp ? camp.name : 'No camp assigned'}
+      </ListGroup.Item>
                   <ListGroup.Item>
                     <strong>Age:</strong> {kid.kidAge} years
                   </ListGroup.Item>
@@ -184,7 +200,7 @@ const DetailsKid = () => {
         <div className="d-flex justify-content-center gap-3 mt-4">
           <Button 
             variant="primary" 
-            onClick={() => navigate('/dashboard/kid/add')}
+           onClick={() => navigate(`/dashboard/kid/add?campId=${id}`)}
           >
             Add Another Kid
           </Button>

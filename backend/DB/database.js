@@ -36,7 +36,7 @@ export const initDB = async () => {
       rules TEXT
     );
   `);
-
+  
   await db.exec(`
     CREATE TABLE IF NOT EXISTS kid (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,7 +49,9 @@ export const initDB = async () => {
       adresse TEXT NOT NULL,
       zayad TEXT,
       tasrihAbawi TEXT,
-      chadaTibiya TEXT
+      chadaTibiya TEXT,
+      idCamp INTEGER,
+      FOREIGN KEY (idCamp) REFERENCES camp(id) ON DELETE SET NULL
     );
   `);
 

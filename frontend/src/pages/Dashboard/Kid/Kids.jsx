@@ -17,6 +17,7 @@ export default function Kids() {
     axios.get(`${BASEURL}/kid/all/all`)
       .then((response) => {
         setKids(response.data);
+        
       })
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
@@ -28,7 +29,7 @@ export default function Kids() {
     { key: "kidMother", name: "Mother Name" },
     { key: "fatherNumber", name: "Father Phone" },
     { key: "kidAge", name: "Age" },
-    { key: "adresse", name: "Address" },
+    { key: "idCamp", name: "Camp id" },
   ];
 
   const handleDelete = async (id) => {

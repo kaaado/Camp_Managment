@@ -216,7 +216,7 @@ export default function AddCamp() {
           <Form.Control
             name="team"
             type="text"
-            placeholder="Enter team details"
+            placeholder="Enter team details (separated by commas)" 
             value={formData.team}
             onChange={handleChange}
           />
@@ -228,7 +228,7 @@ export default function AddCamp() {
             name="program"
             as="textarea"
             rows={3}
-            placeholder="Enter program details"
+            placeholder="Enter program details (separated by commas)"
             value={formData.program}
             onChange={handleChange}
           />
@@ -240,7 +240,7 @@ export default function AddCamp() {
             name="rules"
             as="textarea"
             rows={3}
-            placeholder="Enter camp rules"
+            placeholder="Enter camp rules (separated by commas)"
             value={formData.rules}
             onChange={handleChange}
           />

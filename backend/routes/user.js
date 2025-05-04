@@ -3,6 +3,29 @@ import bcrypt from "bcrypt";
 
 const userRouter = express.Router();
 
+export const initializeDefaultAdmin = async (db) => {
+  try {
+    const adminExists = await db.get(
+      "SELECT id FROM user WHERE mail = ?", 
+      ["admin@admin.com"]
+    );
+    
+    if (!adminExists) {
+      const hashedPassword = await bcrypt.hash("123456789", 10);
+      await db.run(
+        "INSERT INTO user (name, mail, password, type) VALUES (?, ?, ?, ?)",
+        ["Admin", "admin@admin.com", hashedPassword, "admin"]
+      );
+      console.log("✅ Default admin account created");
+    } else {
+      console.log("ℹ️ Default admin account already exists");
+    }
+  } catch (error) {
+    console.error("❌ Error creating default admin:", error);
+  }
+};
+
+
 userRouter.get("/:id", async (req, res) => {
   const db = req.app.locals.db;
   const { id } = req.params;

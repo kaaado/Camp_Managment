@@ -108,19 +108,7 @@ if (!isAuthenticated()) {
 </NavLink>
 </>
 }
-<NavLink 
-  
-  to="/dashboard/kid/add"
-  className={`side-bar-link d-flex align-items-center gap-2 ${isOpen ? 'side-bar-expanded' : 'side-bar-collapsed'}`}
->
-  <TbUsersPlus 
-    className='sidebar-icon icon-collapsed fs-1'
-    
-  />
-  <p className="m-0" style={{ display: isOpen ? "block" : "none" }}>
-   Add Kid
-  </p>
-</NavLink>
+
     </div></>
   );
 }

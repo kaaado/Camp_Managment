@@ -184,13 +184,13 @@ const CampDetails = () => {
           </Row>
 
           <div className="d-flex justify-content-center gap-3 mt-4">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={() => navigate("/dashboard/kid/add")}
-            >
-              Register Now
-            </Button>
+          <Button 
+  variant="primary" 
+  size="lg"
+  onClick={() => navigate(`/dashboard/kid/add?campId=${id}`)}
+>
+  Register Now
+</Button>
           </div>
         </div>
       </div>
