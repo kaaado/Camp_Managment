@@ -90,7 +90,7 @@ function FormComp(props) {
 
 
           <h3 className="mt-2  text-start mb-1 text-capitalize flex align-items-center gap-3">
-            Welcome to Summer Camp! 👋
+            Welcome to Tim Camp! 👋
           </h3>
           <h4 className="text-secondary mb-4 fs-6 w-100">
             Please {props.type} to your account and start the adventure

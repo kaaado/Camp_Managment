@@ -162,8 +162,19 @@ const DetailsKid = () => {
         </Card>
 
         <h3 className="mt-4 mb-3">Documents</h3>
+
         <Row>
-          <Col md={4} className="mb-4">
+        <Col md={3} className="mb-4">
+            <Card>
+              <Card.Header className="bg-info text-white">
+              Personal Photo
+              </Card.Header>
+              <Card.Body className="text-center">
+                {renderFilePreview(kid.photo, "Personal Photo")}
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
               Birth Certificate
@@ -174,7 +185,7 @@ const DetailsKid = () => {
             </Card>
           </Col>
           
-          <Col md={4} className="mb-4">
+          <Col md={3} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
               Paternal Authorization 
@@ -185,7 +196,7 @@ const DetailsKid = () => {
             </Card>
           </Col>
           
-          <Col md={4} className="mb-4">
+          <Col md={3} className="mb-4">
             <Card>
               <Card.Header className="bg-info text-white">
               Medical Certificate

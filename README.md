@@ -1,2 +1,0 @@
-# CampApp
-Multi application 

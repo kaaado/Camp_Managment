@@ -138,3 +138,26 @@
 a{
 	text-decoration:none !important;
 }
+
+
+.developer-footer {
+  transition: all 0.3s ease;
+}
+
+.developer-footer a {
+  transition: all 0.3s ease;
+}
+
+.developer-footer a:hover {
+  color: #FFA500 !important;
+  transform: scale(1.02);
+}
+
+/* For collapsed state */
+.developer-footer.collapsed {
+  padding: 0.5rem !important;
+}
+
+.developer-footer.collapsed a {
+  justify-content: center !important;
+}

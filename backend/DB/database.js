@@ -50,6 +50,7 @@ export const initDB = async () => {
       zayad TEXT,
       tasrihAbawi TEXT,
       chadaTibiya TEXT,
+      photo TEXT,
       idCamp INTEGER,
       FOREIGN KEY (idCamp) REFERENCES camp(id) ON DELETE SET NULL
     );

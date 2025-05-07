@@ -11,10 +11,10 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cookie from 'cookie-universal';
-import LoadingSubmit from '../Loading/loading';
 
 import { useUser } from '../../context/UserContext';
 import toast from 'react-hot-toast';
+import LoadingSubmit from '../Loading/loading';
 
 export default function TopBar() {
     const { user, loading, isAuthenticated } = useUser();
@@ -72,7 +72,7 @@ export default function TopBar() {
     </div>
     
     <div className=" d-flex align-items-center justify-content-end" >
-<DropdownButton id=" dropdown-basic-button"  variant="transparent" title={<FaUser  className='fs-4 d-inline' />}>
+    <DropdownButton id="dropdown-basic-button" variant="transparent" title={<FaUser className='fs-4 d-inline' />}>
     <div className="user-info"> 
         <FaUser className='fs-4'/>
         <div>
@@ -80,17 +80,19 @@ export default function TopBar() {
             <div>{user.mail}</div>
         </div>
     </div>
-     <div className="dropdown-divider"></div>
-     {user.type==="admin" &&
-        <Dropdown.Item className="dropdown-item p-2 d-flex align-items-center">
+    <div className="dropdown-divider"></div>
+    {user.type==="admin" &&
+        <Dropdown.Item 
+            className="dropdown-item p-2 d-flex align-items-center"
+            as={Link}
+            to={`/dashboard/user/${user.id}`}
+        >
             <IoSettingsSharp className="me-2 fs-4" /> 
-            <Link className="text-decoration-none text-body" to={`/dashboard/user/${user.id}`}>
-                Setting
-            </Link>
+            Setting
         </Dropdown.Item>
-} 
+    } 
     <Dropdown.Item className="dropdown-item p-2 d-flex align-items-center" onClick={handleLogout}>
-        <IoLogOut  className="me-2 fs-4" /> 
+        <IoLogOut className="me-2 fs-4" /> 
         Logout
     </Dropdown.Item>
 </DropdownButton>

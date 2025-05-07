@@ -10,7 +10,6 @@ const AddKid = () => {
 const { search } = useLocation();
 const queryParams = new URLSearchParams(search);
 const campId = queryParams.get('campId');
-console.log(campId)
   // Form data state
   const [formData, setFormData] = useState({
     kidName: "",
@@ -28,12 +27,14 @@ console.log(campId)
     zayad: null,
     tasrihAbawi: null,
     chadaTibiya: null,
+    photo: null,
   });
 
   const [filePreviews, setFilePreviews] = useState({
     zayad: "",
     tasrihAbawi: "",
     chadaTibiya: "",
+    photo: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -83,7 +84,7 @@ console.log(campId)
 
 
     // Required files check
-    if (!files.zayad || !files.tasrihAbawi || !files.chadaTibiya) {
+    if (!files.zayad || !files.tasrihAbawi || !files.chadaTibiya || !files.photo) {
       toast.error("All documents are required");
       return false;
     }
@@ -131,11 +132,13 @@ console.log(campId)
         zayad: null,
         tasrihAbawi: null,
         chadaTibiya: null,
+        photo: null,
       });
       setFilePreviews({
         zayad: "",
         tasrihAbawi: "",
         chadaTibiya: "",
+        photo: "",
       });
     } catch (err) {
       console.error(err);
@@ -248,14 +251,16 @@ console.log(campId)
         </Form.Group>
 
         {/* File uploads with previews */}
-        {['zayad', 'tasrihAbawi', 'chadaTibiya'].map((fileType) => (
+        {['photo','zayad', 'tasrihAbawi', 'chadaTibiya'].map((fileType) => (
   <Form.Group key={fileType} className="mb-3" controlId={fileType}>
     <Form.Label>
       {fileType === "zayad" 
         ? "Birth Certificate" 
         : fileType === "tasrihAbawi" 
           ? "Paternal Authorization" 
-          : "Medical Certificate"}
+          : fileType === "chadaTibiya"
+          ? "Medical Certificate"
+          :"Personal Photo"}
     </Form.Label>
     <div className="d-flex flex-row gap-2 align-items-center">
       {filePreviews[fileType] && (
@@ -286,7 +291,7 @@ console.log(campId)
           type="submit" 
           className="mt-3 w-100"
           variant="outline-primary"
-          disabled={loading || !formData.kidName.length>2 || !formData.kidFather.length>2 || !formData.kidMother.length>2 || !formData.fatherNumber.length==10 || !formData.kidAge || !formData.adresse.length>2}
+          disabled={loading || !formData.kidName.length>2 || !formData.kidFather.length>2 || !formData.kidMother.length>2 || !formData.fatherNumber.length==10 || !formData.kidAge || !formData.adresse.length>2 || !formData.idCamp.length>2 || !files.zayad || !files.tasrihAbawi || !files.chadaTibiya || !files.photo}
         >
           {loading ? 'Submitting...' : 'Submit'}
         </Button>
